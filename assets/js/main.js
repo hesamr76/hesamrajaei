@@ -1,5 +1,5 @@
 let numberOfSites =  0 , current = 1 , center = 1;
-var sites = {"1":1,"2":2,"3":3}
+var sites = {"1":2,"2":1,"3":3}
 
 function setCenter(sites){
   if (sites  % 2 == 0) {
@@ -42,11 +42,11 @@ function active(item){
 }
 
 function goRight(item) {
-  $("#site_" + item).css({"width":"30%","left":"60%","margin-top":"4.5rem","z-index":"80","opacity":"0.8"})
+  $("#site_" + item).css({"width":"30%","left":"60%","margin-top":"4.5rem","z-index":"80","opacity":"0.7"})
 }
 
 function goLeft(item){
-  $("#site_" + item).css({"width":"30%","left":"10%","margin-top":"4.5rem","z-index":"80","opacity":"0.8"})
+  $("#site_" + item).css({"width":"30%","left":"10%","margin-top":"4.5rem","z-index":"80","opacity":"0.7"})
 }
 
 function rightReorder() {
@@ -80,4 +80,22 @@ function next(){current--;rightReorder()}
 function prev(){current++;leftReorder()}
 
 
- define()
+define()
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+function copyToClipboard(element){
+  var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val($(element).text()).select();
+      document.execCommand("copy");
+      $temp.remove();
+}
+
+function toggleElem(element){
+  if ($(element).css("opacity") == '1') {
+    $(element).css({"opacity":"0","display":"block"})
+  }else{$(element).css({"opacity":"1","display":"block"})}
+}
